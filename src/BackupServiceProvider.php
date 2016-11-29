@@ -7,6 +7,7 @@ use Spatie\Backup\Commands\BackupCommand;
 use Spatie\Backup\Commands\CleanupCommand;
 use Spatie\Backup\Commands\ListCommand;
 use Spatie\Backup\Commands\MonitorCommand;
+use Spatie\Backup\Commands\RestoreCommand;
 use Spatie\Backup\Helpers\ConsoleOutput;
 use Spatie\Backup\Notifications\EventHandler;
 
@@ -35,12 +36,14 @@ class BackupServiceProvider extends ServiceProvider
         $this->app->bind('command.backup:clean', CleanupCommand::class);
         $this->app->bind('command.backup:list', ListCommand::class);
         $this->app->bind('command.backup:monitor', MonitorCommand::class);
+        $this->app->bind('command.backup:restore', RestoreCommand::class);
 
         $this->commands([
             'command.backup:run',
             'command.backup:clean',
             'command.backup:list',
             'command.backup:monitor',
+            'command.backup:restore',
         ]);
 
         $this->app->singleton(ConsoleOutput::class);

@@ -54,4 +54,12 @@ class Backup
         $this->disk->delete($this->path);
         consoleOutput()->info("Deleted backup `{$this->path}`.");
     }
+
+    /**
+     * @return Filesystem
+     */
+    public function getDisk()
+    {
+        return $this->disk;
+    }
 }
